@@ -1,5 +1,6 @@
 import sqlite3
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, CallbackContext
+from telegram.ext import filters as filters
 
 # Create or connect to the database
 conn = sqlite3.connect('subjects.db')
@@ -19,7 +20,7 @@ conn.commit()
 
 subjects_data = [
     ('COMPUTER GRAPHICS', 'Link to notes for Subject 1', 'Link to syllabus for Subject 1', 'Link to assignments for Subject 1', 'Link to previous year questions for Subject 1'),
-    ('FUNDAMENTAL OF DATA STRUCTURE', 'Link to notes for Subject 2', 'Link to syllabus for Subject 2', 'Link to assignments for Subject 2', 'Link to previous year questions for Subject 2'),
+    ('FUNDAMENTAL OF DATA ', 'Link to notes for Subject 2', 'Link to syllabus for Subject 2', 'Link to assignments for Subject 2', 'Link to previous year questions for Subject 2'),
     # Add more subjects and resources
 ]
 
@@ -96,8 +97,9 @@ def subject_selected(update, context):
         context.bot.send_message(chat_id=update.message.chat_id, text=response)
     except KeyError:
         context.bot.send_message(chat_id=update.message.chat_id, text="Invalid subject selection. Please select a valid subject.")
+dispatcher.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, subject_selected))
 
-dispatcher.add_handler(MessageHandler(Filters.text & ~Filters.command, subject_selected))
+# Start the bot polling
 updater.start_polling()
 updater.idle()
 
