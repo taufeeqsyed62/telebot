@@ -1,6 +1,5 @@
 import sqlite3
-from telegram.ext import Updater, CommandHandler, MessageHandler
-from telegram.ext import Filters
+from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 
 # Create or connect to the database
 conn = sqlite3.connect('subjects.db')
@@ -20,7 +19,7 @@ conn.commit()
 
 subjects_data = [
     ('COMPUTER GRAPHICS', 'Link to notes for Subject 1', 'Link to syllabus for Subject 1', 'Link to assignments for Subject 1', 'Link to previous year questions for Subject 1'),
-    ('FUNDAMENTAL OF DATA ', 'Link to notes for Subject 2', 'Link to syllabus for Subject 2', 'Link to assignments for Subject 2', 'Link to previous year questions for Subject 2'),
+    ('FUNDAMENTAL OF DATA STRUCTURE', 'Link to notes for Subject 2', 'Link to syllabus for Subject 2', 'Link to assignments for Subject 2', 'Link to previous year questions for Subject 2'),
     # Add more subjects and resources
 ]
 
