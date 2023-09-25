@@ -67,7 +67,7 @@ subjects = {
 }
 
 # Initialize the bot
-updater = Updater(token='6312810364:AAES3PXnbyxjERNzBcCY_MJhvAiDOh5Wmaw', use_context=True)
+updater = Updater(token='6312810364:AAFCpsbOAEOwTuDt2t4ThdPqE2sQtO1GQOg', use_context=True)
 dispatcher = updater.dispatcher
 
 def start(update, context):
